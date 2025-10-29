@@ -2,10 +2,10 @@ import { defineConfig } from "astro/config"
 
 export default defineConfig({
   i18n: {
-    defaultLocale: "en",
+   defaultLocale: "en",
     locales: ["en", "fr", "ru"],
     routing: {
-      prefixDefaultLocale: true
+      prefixDefaultLocale: false
     },
     fallback: {
       fr: "en", 
