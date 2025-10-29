@@ -1,27 +1,29 @@
 ---
-import LanguagePicker from "./LanguagePicker.astro";
-import { getI18N } from "@/i18n";
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+
+import "../styles/global.css";
+import Header from "@/layouts/TheHeader.astro";
+import Footer from "@/layouts/TheFooter.astro";
+import SVG from "@/layouts/SVG.astro";
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const { title = "", description = "" } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Title</title>
+    <title>{title}</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <LanguagePicker currentLang="en" />
-      </nav>
-      <nav>
-        <a href={`${currentLocale}/about`}>About</a>
-      </nav>
-    </header>
-    <main>
-      <slot />
-    </main>
+    <div class="page">
+      <Header />
+      <main class="page-content">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+    <SVG />
   </body>
 </html>

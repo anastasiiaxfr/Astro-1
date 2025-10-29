@@ -1,0 +1,4 @@
+.hero {
+    @apply text-center pt-10 pb-20 bg-black text-white;
+}
+

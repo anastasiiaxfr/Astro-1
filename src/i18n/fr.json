@@ -1,3 +1,93 @@
 {
-  "title": "HELLO FR"
+  "SEO_TITLE": "Train Your Brain",
+  "SEO_DESCRIPTION": "Start with our IQ test, then come back daily for fast, fun brain training that strengthens logic, memory, and reaction time.",
+  "SITE": {
+    "PHONE": "Toll Free"
+  },
+  "ERROR_404": {
+    "TITLE": "404 - Not Found",
+    "DESCRIPTION": "Not Found",
+    "BACK_HOMEPAGE_BTN": "Go Back"
+  },
+  "title": "HELLO EN",
+  "MENU": [
+    {
+      "URL": "",
+      "LABEL": "Home"
+    },
+    {
+      "URL": "login",
+      "LABEL": "Login"
+    },
+    {
+      "URL": "about",
+      "LABEL": "About"
+    },
+    {
+      "URL": "terms-of-service",
+      "LABEL": "Terms of Service"
+    },
+    {
+      "URL": "privacy-policy",
+      "LABEL": "Privacy Policy"
+    },
+    {
+      "URL": "sitemap",
+      "LABEL": "Sitemap"
+    }
+  ],
+  "HEADER": {
+    "BTNS": [
+      {
+        "URL": "/login",
+        "LABEL": "LOGIN",
+        "TYPE": "secondary"
+      },
+      {
+        "LABEL": "Secure Website",
+        "ICON": "i1",
+        "TYPE": "bd"
+      }
+    ]
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright 2025 Brainwiki",
+    "SUPPORT": {
+      "TITLE": "Customer Support",
+      "DESCRIPTION": "Our 5-star world-class support team is standing by 24/7 to answer your calls and emails. Average email response time: 5 hours."
+    },
+    "DISCLAINER": {
+      "TITLE": "Disclaimer",
+      "DESCRIPTION": "Brainwiki does not provide consumer reports, private investigator services, credit reports, or investigative reports, and is not a consumer reporting agency under the Fair Credit Reporting Act. You may not use our service to make decisions about employment, tenant screening, admission, consumer credit, insurance, or any other purpose that would require an entity operating under FCRA."
+    }
+  },
+  "HERO": {
+    "TITLE": "Train Your Brain",
+    "ICON": "i2",
+    "DESCRIPTION": "Start with our IQ test, then come back daily for fast, fun brain training that strengthens logic, memory, and reaction time.",
+    "BTN": {
+      "URL": "/quiz",
+      "LABEL": "Take an IQ Test"
+    }
+  },
+  "INFO": {
+    "HEADING": "Daily Brain Training Backed by Cognitive Science",
+    "SECTION": [
+      {
+        "TITLE": "Train Your Logic",
+        "DESCRIPTION": "Challenge your reasoning skills with fast-paced logic puzzles that improve critical thinking and problem-solving.",
+        "IMG": "/assets/logic.png"
+      },
+      {
+        "TITLE": "Boost Your Memory",
+        "DESCRIPTION": "Strengthen your short-term and working memory with exercises that help you retain and recall information more efficiently.",
+        "IMG": "/assets/memory.png"
+      },
+      {
+        "TITLE": "Sharpen Your Reactions",
+        "DESCRIPTION": "Improve your cognitive speed with reaction-time drills designed to test and enhance your attention, coordination, and reflexes.",
+        "IMG": "/assets/reaction.png"
+      }
+    ]
+  }
 }

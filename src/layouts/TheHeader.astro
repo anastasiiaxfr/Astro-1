@@ -1,0 +1,62 @@
+---
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+import Drawer from "./Drawer.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+---
+
+<>
+  <header class="header">
+    <div class="container">
+      <Logo />
+      <Nav />
+
+      <LanguagePicker currentLang="en" />
+
+      <button class="header-nav-toggle">
+        <svg class="icon" width="24" height="24">
+          <use xlink:href="#menu"></use>
+        </svg>
+        <svg class="icon" width="24" height="24">
+          <use xlink:href="#x"></use>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <Drawer />
+</>
+
+<script>
+  const navMenuToggle = document.querySelector(".header-nav-toggle");
+  const drawer = document.querySelector(".drawer");
+  const drawerClose = document.querySelector(".drawer-close");
+
+  navMenuToggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    drawer?.classList.toggle("show");
+    navMenuToggle?.classList.add("active");
+  });
+
+  drawerClose?.addEventListener("click", () => {
+    drawer?.classList.remove("show");
+    navMenuToggle?.classList.remove("active");
+  });
+
+  drawer?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      drawer.classList.remove("show");
+      navMenuToggle?.classList.remove("active");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (drawer?.classList.contains("show")) {
+      const isInsideDrawer = drawer.contains(e.target);
+      const isToggleButton = navMenuToggle?.contains(e.target);
+      if (!isInsideDrawer && !isToggleButton) {
+        drawer.classList.remove("show");
+        navMenuToggle?.classList.remove("active");
+      }
+    }
+  });
+</script>

@@ -1,0 +1,69 @@
+---
+import Logo from "./Logo.astro";
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+import { SiteConfig } from "@/config/siteConfig.ts";
+const { site } = SiteConfig.site;
+import { getRelativeLocaleUrl } from "astro:i18n";
+---
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div>
+        <Logo />
+        <nav class="footer-nav">
+          {
+            i18n.MENU.map((link) => (
+              <a href={getRelativeLocaleUrl(currentLocale, link.URL)}>
+                {link.LABEL}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+      <div>
+        <h4>{i18n.FOOTER.DISCLAINER.TITLE}</h4>
+        <p>{i18n.FOOTER.DISCLAINER.DESCRIPTION}</p>
+      </div>
+      <div>
+        <h4>
+          {i18n.FOOTER.SUPPORT.TITLE}
+        </h4>
+
+        <div class="mb-2">
+          <a href={`tel:${site.tel}`} class="chip"
+            >{i18n.SITE.PHONE} {site.tel}</a
+          >
+          <a href={`mailto:${site.email}`} class="chip">{site.email}</a>
+        </div>
+
+        <div class="stars">
+          <svg class="icon" width="24" height="24">
+            <use xlink:href="#star"></use>
+          </svg>
+          <svg class="icon" width="24" height="24">
+            <use xlink:href="#star"></use>
+          </svg>
+          <svg class="icon" width="24" height="24">
+            <use xlink:href="#star"></use>
+          </svg>
+          <svg class="icon" width="24" height="24">
+            <use xlink:href="#star"></use>
+          </svg>
+          <svg class="icon" width="24" height="24">
+            <use xlink:href="#star"></use>
+          </svg>
+        </div>
+
+        <p class="mt-2">{i18n.FOOTER.SUPPORT.DESCRIPTION}</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <div class="container">
+      <p><small>{i18n.FOOTER.COPYRIGHT}</small></p>
+    </div>
+  </div>
+</footer>

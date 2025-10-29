@@ -1,0 +1,8 @@
+site:
+  logo: "Brainwiki"
+  sitename: "Brainwiki"
+  seo:
+    img: './assets/seo/opengraph-image.jpg'
+  site:
+    email: "support@brainwiki.com"
+    tel: "1-888-921-7670"

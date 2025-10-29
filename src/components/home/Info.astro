@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section class="section">
+  <div class="container">
+    <h2 class="text-center">{i18n.INFO.HEADING}</h2>
+
+    {
+      i18n.INFO.SECTION.map((section) => (
+        <div class="section-row">
+          <div>
+            <h3>{section.TITLE}</h3>
+            <p class="subtitle">{section.DESCRIPTION}</p>
+          </div>
+          <div>
+            <Image src={section.IMG} alt="" width="300" height="300" />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

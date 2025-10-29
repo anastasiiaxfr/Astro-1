@@ -1,0 +1,17 @@
+---
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>
+      {i18n.HERO.TITLE}
+    </h1>
+    <p class="subtitle">
+      {i18n.HERO.DESCRIPTION}
+    </p>
+    <a href={i18n.HERO.BTN.URL} class="btn mt-10">{i18n.HERO.BTN.LABEL}</a>
+  </div>
+</section>

@@ -1,10 +1,19 @@
 ---
+import { getRelativeLocaleUrlList } from "astro:i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+
 import { languages } from "../i18n/ui";
 
-// const lang = getLangFromUrl(Astro.url);
-// const translatePath = useTranslatedPath(lang);
+const currentLocale = Astro.currentLocale || "en";
+const localeUrls = getRelativeLocaleUrlList();
 
+const localeList = localeUrls.map((url) => {
+  const segments = url.split("/").filter(Boolean);
+  const lang = segments[0] || currentLocale;
+  return { lang, url };
+});
+
+///
 const getPathWithoutLocale = (path: string): string => {
   const segments = path.split("/").filter(Boolean);
   return segments.slice(1).join("/") || "/";
@@ -14,58 +23,48 @@ const currentPathWithoutLocale = getPathWithoutLocale(Astro.url.pathname);
 const currentLang = Astro.currentLocale || "fr";
 ---
 
-<div class="relative group">
-  <span class="uppercase">{currentLang}</span>
+<div class="dropdown">
+  <button class="dropdown-toggle">
+    <svg class="icon" width="24" height="24">
+      <use xlink:href="#globe"></use>
+    </svg>
+    {currentLang.toUpperCase()}<svg class="icon" width="16" height="16">
+      <use xlink:href="#arr-down"></use>
+    </svg>
+  </button>
 
-  <div
-    class="absolute right-0 w-24 top-full mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-  >
-    <!-- <div
-    class="absolute right-0 w-32 bg-white dark:bg-gray-900 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-  > -->
-    <ul class="text-right">
-      {
-        Object.entries(languages).map(
-          ([langCode, langName]) =>
-            currentLang !== langCode && (
-              <li>
-                <a
-                  href={getRelativeLocaleUrl(
-                    langCode as any,
-                    currentPathWithoutLocale
-                  )}
-                  class="text-center px-4
-      py-2
-      text-sm
-      w-auto
-      rounded-full
-      hover:text-hub-title
-      bg-hub-background
-      drop-shadow-md
-      text-hub-inactive
-      font-bold
-      dark:text-hub-inactive
-      dark:bg-hub-background-dark
-      border-[1px]
-      dark:border-hub-border-dark
-      hover:dark:bg-hub-background-nav-dark dark:hover:text-white"
-                >
-                  {langName}
-                </a>
-              </li>
-            )
-        )
-      }
-    </ul>
-  </div>
+  <nav class="dropdown-menu">
+    {
+      localeList.map(({ lang }) => (
+        <a href={getRelativeLocaleUrl(lang, currentPathWithoutLocale)}>
+          {lang.toUpperCase()}
+        </a>
+      ))
+    }
+  </nav>
 </div>
 
-<!-- <ul>
-  {
-    Object.entries(languages).map(([lang, label]) => (
-      <li>
-        <a href={translatePath("/", lang)}>{label}</a>
-      </li>
-    ))
-  }
-</ul> -->
+<script>
+  const dropdown = document.querySelector(".dropdown");
+  const toggle = dropdown.querySelector(".dropdown-toggle");
+  const menu = dropdown.querySelector(".dropdown-menu");
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.add("show");
+    toggle?.classList.add("active");
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("show");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.remove("show");
+      toggle?.classList.remove("active");
+    }
+  });
+</script>

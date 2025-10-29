@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "./_default.css"; 
+@import "./_text.css"; 
+@import "./_btns.css"; 
+@import "./_nav.css"; 
+@import "./_styles.css"; 
+
+@theme {
+  --color-main: #ff6600;
+  --color-secondary: #ff4400;
+}

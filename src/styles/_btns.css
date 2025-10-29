@@ -1,0 +1,58 @@
+.chip {
+    @apply inline-flex items-center justify-center rounded-2xl px-2 py-1 text-sm my-1 font-bold; 
+    .footer & {
+        @apply bg-white text-black;
+    }
+    .header & {
+        @apply p-0 hover:text-main;
+    }
+}
+
+.stars {
+    @apply flex gap-1 items-center text-amber-300;
+}
+
+.btn {
+    @apply inline-flex items-center justify-center py-3 px-4 rounded bg-main text-white font-bold min-w-[200px] hover:bg-secondary transition;
+}
+
+.btn-secondary {
+    @apply rounded inline-flex items-center justify-center py-1 p-4 text-sm font-bold; 
+    .header &, .drawer & {
+        @apply bg-main text-white hover:bg-secondary;
+    }
+}
+
+.btn-bd {
+    @apply rounded px-3 py-1 border-2 text-sm font-bold text-center;
+    .header & {
+        @apply text-white border-main;
+    }
+}
+
+.dropdown {
+    @apply relative;
+    .header & {
+        @apply ml-auto;
+    }
+
+}
+
+.dropdown-menu {
+    @apply absolute bg-black text-white p-4 rounded border border-white/20 hidden;
+
+    &.show {
+        @apply grid;
+    }
+}
+
+.dropdown-toggle {
+    @apply flex items-center justify-center gap-2 min-w-[100px] cursor-pointer;
+
+    &.active {
+        svg {
+            @apply rotate-180;
+        }
+
+    }
+}
