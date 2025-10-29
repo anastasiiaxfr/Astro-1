@@ -1,0 +1,24 @@
+---
+// src/layouts/BaseLayout.astro
+import LanguagePicker from "./LanguagePicker.astro";
+
+const { lang, title } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <LanguagePicker currentLang={lang} />
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

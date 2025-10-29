@@ -1,0 +1,37 @@
+---
+import { languageLabels, supportedLanguages } from "../i18n/config";
+
+const { currentLang } = Astro.props;
+
+// Get current path without language prefix
+const currentPath = Astro.url.pathname.replace(`/${currentLang}`, "") || "/";
+---
+
+<ul>
+  {
+    supportedLanguages.map((lang) => (
+      <li>
+        <a
+          href={`/${lang}${currentPath}`}
+          aria-current={lang === currentLang ? "page" : undefined}
+        >
+          {languageLabels[lang]}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  a[aria-current="page"] {
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>
