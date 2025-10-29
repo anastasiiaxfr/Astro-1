@@ -1,5 +1,8 @@
 ---
 import LanguagePicker from "./LanguagePicker.astro";
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <html lang="en">
@@ -12,6 +15,9 @@ import LanguagePicker from "./LanguagePicker.astro";
     <header>
       <nav>
         <LanguagePicker currentLang="en" />
+      </nav>
+      <nav>
+        <a href={`${currentLocale}/about`}>About</a>
       </nav>
     </header>
     <main>
