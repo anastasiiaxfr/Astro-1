@@ -1,24 +1,37 @@
 ---
-import { languageLabels, supportedLanguages } from "../i18n/config";
+// src/components/LanguagePicker.astro
+import { supportedLanguages, languageLabels } from "../i18n/config";
 
 const { currentLang } = Astro.props;
 
-// Get current path without language prefix
-const currentPath = Astro.url.pathname.replace(`/${currentLang}`, "") || "/";
+// Get current path
+const pathname = Astro.url.pathname;
+
+// Determine the current page path without language prefix
+let currentPath = "/";
+if (currentLang && pathname.startsWith(`/${currentLang}`)) {
+  currentPath = pathname.replace(`/${currentLang}`, "") || "/";
+}
 ---
 
 <ul>
   {
-    supportedLanguages.map((lang) => (
-      <li>
-        <a
-          href={`/${lang}${currentPath}`}
-          aria-current={lang === currentLang ? "page" : undefined}
-        >
-          {languageLabels[lang]}
-        </a>
-      </li>
-    ))
+    supportedLanguages.map((lang) => {
+      // For the default language (en), link to root paths
+      // For other languages, add language prefix
+      const href = lang === "en" ? currentPath : `/${lang}${currentPath}`;
+
+      return (
+        <li>
+          <a
+            href={href}
+            aria-current={lang === currentLang ? "page" : undefined}
+          >
+            {languageLabels[lang]}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
 
