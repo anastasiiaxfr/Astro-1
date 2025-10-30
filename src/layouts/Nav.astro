@@ -12,6 +12,11 @@ const { site } = SiteConfig.site;
   {
     i18n.HEADER.BTNS.map((btn) => (
       <a href={btn.URL || "#"} class={`btn-${btn.TYPE}`}>
+        {btn.TYPE === "bd" && (
+          <svg class="icon" width="16" height="16">
+            <use xlink:href="#secure" />
+          </svg>
+        )}
         {btn.LABEL}
       </a>
     ))

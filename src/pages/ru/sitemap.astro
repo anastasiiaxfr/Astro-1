@@ -1,5 +1,54 @@
 ---
+import Layout from "@/layouts/Layout.astro";
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 
+/**
+ * Dynamic sitemap page for Astro
+ * Automatically lists all routes in /src/pages (excluding dynamic [slug] routes)
+ */
+
+const pages = Object.keys(
+  import.meta.glob("/src/pages/**/*.astro", { eager: true })
+)
+  // remove the leading folder path
+  .map(
+    (path) =>
+      path
+        .replace("/src/pages", "")
+        .replace(/index\.astro$/, "") // remove index
+        .replace(/\.astro$/, "") // remove extension
+  )
+  // filter out dynamic or special pages
+  .filter(
+    (url) =>
+      !url.includes("[") && // skip dynamic routes
+      !url.startsWith("/sitemap") && // skip this sitemap page
+      !url.startsWith("/404") // skip 404 page
+  )
+  // ensure it ends with /
+  .map((url) => (url.endsWith("/") ? url : url + "/"));
+
+const base = Astro.site?.toString().replace(/\/$/, "") || "";
 ---
 
-<h1>Sitemap</h1>
+<Layout title={i18n.SEO_TITLE} description={i18n.SEO_DESCRIPTION}>
+  <article>
+    <div class="container">
+      <h1>Site Map</h1>
+      <ul>
+        {
+          pages.map((url) => {
+            const fullUrl = `${base}${url}`;
+            return (
+              <li>
+                <a href={url}>{fullUrl}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </article>
+</Layout>

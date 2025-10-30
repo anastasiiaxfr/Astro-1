@@ -89,5 +89,17 @@
         "IMG": "/assets/reaction.png"
       }
     ]
+  },
+  "ABOUT": {
+    "BLOKS": [
+      {
+        "TITLE": "Our Mission",
+        "DESCRIPTION": "At Brainwiki, our mission is to make brain training and testing accessible to everyone."
+      },
+      {
+        "TITLE": "Contact Us",
+        "TYPE": "Contacts"
+      }
+    ]
   }
 }

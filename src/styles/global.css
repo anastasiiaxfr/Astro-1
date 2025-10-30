@@ -3,7 +3,9 @@
 @import "./_text.css"; 
 @import "./_btns.css"; 
 @import "./_nav.css"; 
+@import "./_row.css"; 
 @import "./_styles.css"; 
+
 
 @theme {
   --color-main: #ff6600;

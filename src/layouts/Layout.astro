@@ -1,6 +1,6 @@
 ---
-
 import "../styles/global.css";
+import SEO from "./SEO.astro";
 import Header from "@/layouts/TheHeader.astro";
 import Footer from "@/layouts/TheFooter.astro";
 import SVG from "@/layouts/SVG.astro";
@@ -14,7 +14,7 @@ const { title = "", description = "" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
+    <SEO title={title} description={description} />
   </head>
   <body>
     <div class="page">

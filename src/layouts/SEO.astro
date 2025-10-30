@@ -1,0 +1,101 @@
+---
+const { title, description } = Astro.props;
+
+const {
+  seo = {
+    title: title || `IQ & EQ Test - Brainwiki`,
+    description:
+      description ||
+      "Start with our IQ test, then come back daily for fast, fun brain training that strengthens logic, memory, and reaction time.",
+    url: new URL(Astro.url.pathname || "/", Astro.site),
+    img: "/seo/OG-1200x630.jpg",
+    author: "Brainwiki",
+    site_name: "Brainwiki",
+  },
+} = Astro.props;
+---
+
+<title>{`${seo.title}`}</title>
+<meta name="description" content={seo.description} />
+<meta name="author" content={seo.author} />
+<link rel="canonical" href={`${Astro.site}`} />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- FACESPACE -->
+<meta property="og:title" content={`${seo.title}`} />
+<meta property="og:description" content={seo.description} />
+
+<meta property="og:image:height" content="1200" />
+<meta property="og:image:width" content="630" />
+<meta property="og:image" content={seo.img} />
+
+<meta property="fb:app_id" content="..." />
+<meta property="fb:admins" content={seo.author} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={seo.site_name} />
+<meta property="og:url" content={`${Astro.site}`} />
+
+<!-- THE TWITTER MACHINE -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={`${Astro.site}`} />
+<meta name="twitter:site" content={seo.site_name} />
+<meta name="twitter:creator" content={seo.author} />
+<meta name="twitter:title" content={seo.title} />
+<meta name="twitter:description" content={seo.description} />
+<meta
+  name="twitter:image"
+  content={`${Astro.site}${seo.img ? seo.img : `seo/OG-TW-600x335.jpg`}`}
+/>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="/favicon/favicon-96x96.png"
+  sizes="96x96"
+/>
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicon/apple-touch-icon.png"
+/>
+<link rel="manifest" href="/favicon/site.webmanifest" />
+
+<script async type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Organization",
+    "name": "Brainwiki",
+    "brand": "Brainwiki",
+    "alternateName": "Brainwiki",
+    "url": "",
+    "logo": "/logo.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lordou Vironos 71, Nicosia 1080,",
+      "addressLocality": "Lordou Vironos",
+      "addressCountry": "Кипр"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "support@brainwiki.com",
+        "email": "support@brainwiki.com",
+        "contactType": "customer support",
+        "areaServed": "EN",
+        "availableLanguage": ["Englishn"]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/",
+      "https://www.tiktok.com/",
+      "https://twitter.com/",
+      "https://www.youtube.com/channel/",
+      "https://t.me/Brainwiki"
+    ]
+  }
+</script>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://astro-1-coral.vercel.app/sitemap-index.xml

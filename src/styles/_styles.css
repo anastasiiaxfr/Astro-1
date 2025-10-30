@@ -1,9 +1,9 @@
 .hero {
-    @apply text-center pt-10 pb-20 bg-black text-white;
+    @apply text-center pt-15 pb-20 bg-black text-white;
 }
 
-.page-single {
-    @apply my-10 md:my-20;
+.page-content > article {
+    @apply my-10 lg:my-20;
 }
 
 .page-single p, li {
@@ -23,5 +23,9 @@
 }
 .page-single table td, .page-single table th {
     @apply border border-black/20 p-2;
+}
+
+.box {
+    @apply p-4 rounded-xl shadow-2xl max-w-[700px] w-full border-t-4 border-main;
 }
 

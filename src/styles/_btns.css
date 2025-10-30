@@ -1,5 +1,5 @@
 .chip {
-    @apply inline-flex items-center justify-center rounded-2xl px-2 py-1 text-sm my-1 font-bold; 
+    @apply inline-flex items-center justify-start rounded-2xl px-2 py-1 text-sm my-1 font-bold gap-2; 
     .footer & {
         @apply bg-white text-black;
     }
@@ -24,9 +24,13 @@
 }
 
 .btn-bd {
-    @apply rounded px-3 py-1 border-2 text-sm font-bold text-center;
+    @apply rounded px-3 py-1 border-2 text-sm font-bold text-center inline-flex items-center justify-center gap-2; 
     .header & {
         @apply text-white border-main;
+    }
+
+    svg {
+        @apply text-main;
     }
 }
 
