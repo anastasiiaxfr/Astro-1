@@ -2,3 +2,26 @@
     @apply text-center pt-10 pb-20 bg-black text-white;
 }
 
+.page-single {
+    @apply my-10 md:my-20;
+}
+
+.page-single p, li {
+    @apply my-2;
+}
+
+.page-single h1 {
+    @apply text-3xl lg:text-5xl mb-4;
+}
+
+.page-single h2 {
+    @apply text-2xl lg:text-3xl mt-5 mb-4;
+}
+
+.page-single table {
+    @apply w-full my-3;
+}
+.page-single table td, .page-single table th {
+    @apply border border-black/20 p-2;
+}
+

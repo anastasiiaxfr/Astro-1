@@ -18,6 +18,12 @@
     .subtitle {
         @apply text-[1em] lg:text-xl;
     }
+}
 
-    
+ol {
+    @apply list-decimal pl-2 lg:pl-4;
+}
+
+li > ol {
+    @apply ml-2 lg:ml-4;
 }
