@@ -24,6 +24,10 @@ ol {
     @apply list-decimal pl-2 lg:pl-4;
 }
 
-li > ol {
+ul {
+    @apply list-disc pl-2 lg:pl-4;
+}
+
+li > ol, li > ul {
     @apply ml-2 lg:ml-4;
 }
