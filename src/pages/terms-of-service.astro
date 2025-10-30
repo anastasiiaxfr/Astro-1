@@ -1,14 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getI18N } from "@/i18n";
+
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+
+let Content, frontmatter;
+
+try {
+  ({ Content, frontmatter } = await import(
+    `@/md/${currentLocale}/terms-of-service.md`
+  ));
+} catch (e) {
+  ({ Content, frontmatter } = await import(`@/md/en/terms-of-service.md`));
+}
 ---
 
 <Layout title={i18n.SEO_TITLE} description={i18n.SEO_DESCRIPTION}>
   <article class="page-single">
     <div class="container">
-      <h1>Terms EN</h1>
+      <h1>{frontmatter.title}</h1>
+      <Content />
     </div>
   </article>
 </Layout>

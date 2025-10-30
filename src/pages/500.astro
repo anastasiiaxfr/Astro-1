@@ -1,0 +1,42 @@
+---
+import "@/styles/404.css";
+import SEO from "@/layouts/SEO.astro";
+import Logo from "@/layouts/Logo.astro";
+
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
+
+import { ClientRouter } from "astro:transitions";
+
+const seo = {
+  title: "500",
+  description: "SEO 500 desc",
+  url: "500",
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO seo={seo} />
+    <ClientRouter />
+  </head>
+  <body>
+    <main class="page">
+      <div class="container">
+        <Logo />
+        <h1>500</h1>
+        <p>
+          {error instanceof Error ? error.message : "Unknown error"}
+        </p>
+        <a href="/" class="btn">GO TO HOME</a>
+      </div>
+    </main>
+  </body>
+</html>

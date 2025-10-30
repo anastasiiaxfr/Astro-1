@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "./_default.css"; 
+@theme {
+  --color-main: #ff6600;
+  --color-secondary: #ff4400;
+}
+
+.page {
+    @apply flex items-center justify-center text-center bg-black text-white;
+}
+
+.btn {
+    @apply inline-flex items-center justify-center py-3 px-4 rounded bg-main text-white font-bold min-w-[200px] hover:bg-secondary transition mt-4;
+}
+
+h1 {
+    @apply text-[10em] font-bold; 
+    line-height: 0.9;
+}
+
+.logo {
+    @apply font-bold text-2xl;
+}
