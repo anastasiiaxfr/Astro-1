@@ -1,23 +1,31 @@
 {
-  "name": "",
+  "name": "brainwiki",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.16",
+    "@tinacms/cli": "^1.11.0",
     "astro": "^5.15.2",
     "i18next": "^25.6.0",
     "i18next-fs-backend": "^2.6.0",
     "i18next-http-middleware": "^3.8.1",
-    "tailwindcss": "^4.1.16"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.16",
+    "tinacms": "^2.9.0"
   },
   "devDependencies": {
+    "@astrojs/vercel": "^9.0.0",
     "@rollup/plugin-yaml": "^4.1.2"
   }
 }
